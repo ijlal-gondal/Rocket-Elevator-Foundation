@@ -53,6 +53,8 @@ Rails.application.routes.draw do
   get 'employee' => 'pages#employee'
   
   get 'dashboard' => 'pages#dashboard'
+  
+  get 'intervention' => 'pages#intervention'
 
 
   resources :geolocations

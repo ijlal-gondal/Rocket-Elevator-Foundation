@@ -1,0 +1,88 @@
+<!--*******************************************************************************************************************************************************************************************************************************************
+	*******************************************************************************************************************************************************************************************************************************************-->
+<!-- INTERVENTION FORM -->
+	<% if user_signed_in? %>
+  <li>
+
+  
+
+<br/><br/><br/><br/><br/>
+<%= form_tag "/intervention", method: 'post' do %>
+<div id="formbackground" style="background-image: url('/assets/background_elevator.jpg');">
+	<div class="container  formStyle">
+    <br/><br/><br/><br/><br/><br/><br/><br/>
+		<div class="row">
+			<div class="col-md-12 d-flex justify-content-center">
+				<!-- entity selector--> 
+			<%= form_for @intervention do |f| %>
+            <div class="field">
+             <%= f.collection_select :contact_full_name, Customer.order(:id), :id, :contact_full_name, include_blank: true  %>
+            </div>
+  				<select id="clientSelector" name ="clientSelector" onchange="clientValue(); clearValue()">
+					<option id="default_client">Select</option>
+					<option value="client"> <%= @client.first.contact_full_name %></option>
+                    <option value="client"> <%= @client.find(2).contact_full_name%></option>
+				</select>                          
+				<select id="buildingSelector" name ="buildingSelector" onchange="buildingValue(); clearValue()">
+					<option id="default_building">Select</option>
+					<option value="building">building</option>
+				</select>
+				<select id="batterySelector" name ="batterySelector" onchange="batteryValue(); clearValue()">
+					<option id="default_battery">None</option>
+					<option value="battery">battery</option>
+				</select>                
+				<select id="columnSelector" name ="columnSelector" onchange="columnValue(); clearValue()">
+					<option id="default_column">None</option>
+					<option value="column">column</option>
+				</select> 
+				<select id="elevatorSelector" name ="elevatorSelector" onchange="elevatorValue(); clearValue()">
+					<option id="default_elevator">None</option>
+					<option value="elevator">elevator</option>
+				</select>                              
+                <!-- /entity selector -->
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 d-flex justify-content-center">
+				<!-- employee selector--> 
+  				<select id="employeeSelector" name ="employeeSelector" onchange="employeeValue(); clearValue()">
+					<option id="default_employee">None</option>
+					<option value="employee">employee</option>
+				</select>                                                      
+                <!-- /employee selector -->
+			</div>
+		</div>       
+		<div class="row">
+			<input class="basicInfos" name ="Description" type="text" id="description" placeholder="Description*" required>
+            <p> <%= @client.first.contact_full_name %></p>
+		</div>
+
+		<div classs="row">
+			<div class="col-md-12 d-flex justify-content-center addTo">
+				<%# BUTTON SUBMIT %>
+				<input class="btn btn-outline-success btn-lg submitBtn submission_form" type="submit" value="Add the the quote list" />
+			</div>
+		</div>
+	</div>
+	<!-- /result inputs -->
+</div>
+<%end%>
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>   
+<%end%>
+
+	</li>
+	<% else %>
+	<li>
+	<%= link_to('Login', new_user_session_path) %>  
+	<%= form_tag "/submission", method: 'post' do %>
+
+<div id="formbackground" style="background-image: url('/assets/background_elevator.jpg');">
+	<div class="container  formStyle">
+		<div class="row">
+<h1> Please Log in by pressing the button above to acess this section, Thank you!</h1>
+
+
+<%end%>
+  </li>
+<% end %>

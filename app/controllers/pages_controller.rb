@@ -8,7 +8,13 @@ class PagesController < ApplicationController
   after_action :sendEmail, :function_send_ticket, only: [:create]
 
 
-  
+  # def intervention
+  #   @intervention = Intervention.new
+  #   # @client = Customer.all
+  #   # @address = Address.all
+  #   # @elevator = Elevator.all
+ 
+  # end
 
   def index
   end
