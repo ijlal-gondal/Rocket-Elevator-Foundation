@@ -1,6 +1,6 @@
-class CreateTableInterventions < ActiveRecord::Migration[5.2]
-  def up
-    create_table :table_interventions do |t|
+class CreateInterventions < ActiveRecord::Migration[5.2]
+  def change
+    create_table :interventions do |t|
 
     t.bigint :Author
     t.bigint :CustomerID

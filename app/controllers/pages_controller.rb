@@ -10,9 +10,9 @@ class PagesController < ApplicationController
 
   # def intervention
   #   @intervention = Intervention.new
-  #   # @client = Customer.all
-  #   # @address = Address.all
-  #   # @elevator = Elevator.all
+  # #   # @client = Customer.all
+  # #   # @address = Address.all
+  # #   # @elevator = Elevator.all
  
   # end
 
