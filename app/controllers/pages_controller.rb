@@ -44,20 +44,20 @@ class PagesController < ApplicationController
   end
 
 
-def sendEmail
+# def sendEmail
 
-  sendgrid = SendGridApi::CustomSendGrid.new
-  subject = "Leads create"
-  to = Lead.last.email
-  message = "<html><body>  Greeting, <strong> #{Lead.last.full_name} </strong>. <br>
-  We thank you for contacting Rocket Elevators to discuss the opportunity to contribute to your project <em> #{Lead.last.project_name} </em>. <br>
-  A representative from our team will be in touch with you very soon. We look forward to demonstrate the value of our solutions and help you choose the appropriate product given your requirements. <br>
-  We’ll Talk soon, <br>
-  The Rocket Team <br>
-  </body></html>"
-  sendgrid.basic_mail(subject, to, message)
+#   sendgrid = SendGridApi::CustomSendGrid.new
+#   subject = "Leads create"
+#   to = Lead.last.email
+#   message = "<html><body>  Greeting, <strong> #{Lead.last.full_name} </strong>. <br>
+#   We thank you for contacting Rocket Elevators to discuss the opportunity to contribute to your project <em> #{Lead.last.project_name} </em>. <br>
+#   A representative from our team will be in touch with you very soon. We look forward to demonstrate the value of our solutions and help you choose the appropriate product given your requirements. <br>
+#   We’ll Talk soon, <br>
+#   The Rocket Team <br>
+#   </body></html>"
+#   sendgrid.basic_mail(subject, to, message)
 
-end
+# end
 
 
 
@@ -81,22 +81,4 @@ end
 
 end
 
-  def function_send_ticket
-      
-    @client = ZendeskAPI::Client.new do |config|
-      config.url = "https://supportRocket.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
-      # Basic / Token Authentication
-      config.username = "marc_travail@hotmail.com"
-      # config.token = "Zendesk_Token"
-      config.token = ENV["Zendesk_Token"]
-    end
-
-    ZendeskAPI::Ticket.create!(@client,
-      :subject => "#{@lead.full_name} from #{@lead.business_name}",
-      :description => "Create Ticket",
-      :comment =>{ :value =>
-      "The contact #{@lead.full_name} from company #{@lead.business_name} can be reached at email #{@lead.email} and at phone number #{@lead.phone}. #{@lead.department} department has a project named #{@lead.project_name} which would require contribution from Rocket Elevators."},
-      :type => 'question',
-      :priority => "urgent")
-  end
 

@@ -1,7 +1,7 @@
 <!--*******************************************************************************************************************************************************************************************************************************************
 	*******************************************************************************************************************************************************************************************************************************************-->
 <!-- INTERVENTION FORM -->
-	<% if user_signed_in? %>
+<% if user_signed_in? && current_user.is_employee(current_user.email) %> 
   <li>
 
   
@@ -16,24 +16,24 @@
 				<!-- entity selector--> 
 			<%= form_for @intervention do |f| %>
             <div class="field">
-			<%= f.label :id, "Client" %><br />
-             <%= f.collection_select :id, Customer.order(:id), :id, :contact_full_name, include_blank: true  %>
+			<%= f.label :CustomerID, "Client" %><br />
+             <%= f.collection_select :CustomerID, Customer.order(:id), :id, :contact_full_name, include_blank: true  %>
             </div>
-			<div class="field">
-				<%= f.label :id, "Building" %><br />
-				<%= f.grouped_collection_select :id, Customer.order(:id), :buildings, :contact_full_name, :id, :id, include_blank: true %>
+			<div class="field" id="Building">
+				<%= f.label :BuildingID, "Building" %><br />
+				<%= f.grouped_collection_select  :BuildingID, Customer.order(:id), :buildings, :contact_full_name, :id, :id, include_blank: true %>
 			</div>
 			<div class="field">
-				<%= f.label :id, "Battery" %><br />
-				<%= f.grouped_collection_select :id, Building.order(:id), :batteries, :id, :id, :id, include_blank: true %>
+				<%= f.label :BatteryID, "Battery" %><br />
+				<%= f.grouped_collection_select :BatteryID, Building.order(:id), :batteries, :id, :id, :id, include_blank: true %>
 			</div>
 			<div class="field">
-				<%= f.label :id, "Column" %><br />
-				<%= f.grouped_collection_select :id, Battery.order(:id), :columns, :id, :id, :id, include_blank: true %>
+				<%= f.label :ColumnID, "Column" %><br />
+				<%= f.grouped_collection_select :ColumnID, Battery.order(:id), :columns, :id, :id, :id, include_blank: true %>
 			</div>
 			<div class="field">
-				<%= f.label :id, "Elevator" %><br />
-				<%= f.grouped_collection_select :id, Column.order(:id), :elevators, :id, :id, :id, include_blank: true %>
+				<%= f.label :ElevatorID, "Elevator" %><br />
+				<%= f.grouped_collection_select :ElevatorID, Column.order(:id), :elevators, :id, :id, :id, include_blank: true %>
 			</div>				
                                                       
                 <!-- /entity selector -->
@@ -44,21 +44,23 @@
 			<div class="col-md-12 d-flex justify-content-center">
 				<!-- employee selector--> 
             <div class="field">
-			<%= f.label :id, "Employee" %><br />
-             <%= f.collection_select :id, Employee.order(:id), :id, :firstName, include_blank: true  %>
+			<%= f.label :EmployeeID, "Employee" %><br />
+             <%= f.collection_select :EmployeeID, Employee.order(:id), :id, :firstName, include_blank: true  %>
             </div>                                                   
                 <!-- /employee selector -->
 			</div>
 		</div>       
 		<div class="row">
-			<input class="basicInfos" name ="Description" type="text" id="description" placeholder="Description*" required>
-
+			<%# <input class="basicInfos" name ="Description" type="text" id="description" placeholder="Description*" required> %>
+    <%= f.label :Description %><br />
+    <%= f.text_field :Report %>
 		</div>
 
 		<div classs="row">
 			<div class="col-md-12 d-flex justify-content-center addTo">
 				<%# BUTTON SUBMIT %>
-				<input class="btn btn-outline-success btn-lg submitBtn submission_form" type="submit" value="Add the the quote list" />
+				  <div class="actions"><%= f.submit %></div>
+				<%# <input class="btn btn-outline-success btn-lg submitBtn submission_form" type="submit" value="Add to the intervention list" /> %>
 			</div>
 		</div>
 	</div>
@@ -84,3 +86,69 @@
 <h2>	<%= link_to('Login', new_user_session_path) %>  </h2>
 </div>
 <%end%>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+client = $('#intervention_CustomerID').html()
+//  console.log(client)
+buildings = $('#intervention_BuildingID').html()
+// console.log(buildings)
+batteries = $('#intervention_BatteryID').html()
+// console.log(batteries)
+columns = $('#intervention_ColumnID').html()
+// console.log(columns)
+elevators = $('#intervention_ElevatorID').html()
+// console.log(elevators)
+
+
+  $('#intervention_BuildingID').parent().hide();
+
+  $('#intervention_CustomerID').change(function() {
+
+  client = $('#intervention_CustomerID :selected').text();
+
+  escaped_client = client.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
+
+  options = $(buildings).filter("optgroup[label='" + escaped_client + "']").html();
+
+  if (options) {
+    $('#intervention_BuildingID').html(options);
+    $('#intervention_BuildingID').parent().show();
+  } else {
+    $('#intervention_BuildingID').empty();
+    $('#intervention_BuildingID').parent().hide();
+  }
+
+});
+
+// $('#intervention_BuildingID').parent().hide()
+//  $("#intervention_CustomerID").change(function(){
+//    client = $('#intervention_CustomerID :selected').text()
+//    escaped_client = client.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
+//    options = $(buildings).filter("optgroup[label='#{escaped_client}']").html()
+//    if (options == true) {
+//    $('#intervention_BuildingID').html(options)
+//    $('#intervention_BuildingID').parent().show()  }
+//    else{ 
+//    $('#intervention_BuildingID').empty()
+//    $('#intervention_BuildingID').parent().hide() }
+   
+//    })
+//   $('#intervention_BuildingID').hide()
+//   buildings = $('#intervention_BuildingID').html()
+//   console.log(buildings)
+//   $('#intervention_CustomerID').change(function () {
+// 	    client = $('#intervention_CustomerID :selected').text()
+//   escaped_client = client.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
+//   options = $(buildings).filter("optgroup[label='#{escaped_client}']").html()
+//   if options 
+//   $('#intervention_BuildingID').html(options)
+//   $('#intervention_BuildingID').parent().show()
+//   else
+//   $('#intervention_BuildingID').empty()
+//   $('#intervention_BuildingID').parent().hide()
+//   })
+
+// intervention_BatteryID, intervention_ColumnID, intervention_ElevatorID, 
+</script>

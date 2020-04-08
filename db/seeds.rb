@@ -17,163 +17,178 @@ nbOfEmployee = 20
 nbOfCustomer = 30
 
 
-nbAdresse.times do
-  Address.create([{
-      address_type: [:Billing, :Shipping, :Home, :Business].sample,
-      status: [:Active, :Inactive].sample,
-      entity: [:Building, :Customer].sample,
-      street_number_name: Faker::Address.secondary_address,
-      apartment_number: Faker::Number.number(digits: 2),
-      city: Faker::Address.city_prefix,
-      zip_code: Faker::Address.postcode,
-      country: Faker::Address.country,
-      notes: Faker::Lorem.paragraph 
-  }])
+# nbAdresse.times do
+#   Intervention.create([{
+#       address_type: [:Billing, :Shipping, :Home, :Business].sample,
+#       status: [:Active, :Inactive].sample,
+#       entity: [:Building, :Customer].sample,
+#       street_number_name: Faker::Address.secondary_address,
+#       apartment_number: Faker::Number.number(digits: 2),
+#       city: Faker::Address.city_prefix,
+#       zip_code: Faker::Address.postcode,
+#       country: Faker::Address.country,
+#       notes: Faker::Lorem.paragraph 
+#   }])
 
-  end
+#   end
 
-  Geolocation.create!([
-    { "name": "Buckingham Palace", "latitude": "51.501564","longitude": "-0.141944"},
-    { "name": "Westminster Abbey", "latitude": "51.499581", "longitude": "-0.127309"},
-    { "name": "Big Ben", "latitude": "51.500792", "longitude": "-0.124613"}
-    ])
+# nbAdresse.times do
+#   Address.create([{
+#       address_type: [:Billing, :Shipping, :Home, :Business].sample,
+#       status: [:Active, :Inactive].sample,
+#       entity: [:Building, :Customer].sample,
+#       street_number_name: Faker::Address.secondary_address,
+#       apartment_number: Faker::Number.number(digits: 2),
+#       city: Faker::Address.city_prefix,
+#       zip_code: Faker::Address.postcode,
+#       country: Faker::Address.country,
+#       notes: Faker::Lorem.paragraph 
+#   }])
+
+#   end
+
+  # Geolocation.create!([
+  #   { "name": "Buckingham Palace", "latitude": "51.501564","longitude": "-0.141944"},
+  #   { "name": "Westminster Abbey", "latitude": "51.499581", "longitude": "-0.127309"},
+  #   { "name": "Big Ben", "latitude": "51.500792", "longitude": "-0.124613"}
+  #   ])
 
 
-  nbOfUser.times do
-     User.create([{
-         email: Faker::Internet.safe_email,
-         password: Faker::Internet.password,
-         firstName: Faker::Name.first_name,
-         lastName: Faker::Name.last_name,
-         phoneNumber: Faker::PhoneNumber.cell_phone,
-         companyName: Faker::Company.name
+  # nbOfUser.times do
+  #    User.create([{
+  #        email: Faker::Internet.safe_email,
+  #        password: Faker::Internet.password,
+  #        firstName: Faker::Name.first_name,
+  #        lastName: Faker::Name.last_name,
+  #        phoneNumber: Faker::PhoneNumber.cell_phone,
+  #        companyName: Faker::Company.name
          
-    }])
-  end
+  #   }])
+  # end
 
 
 i = 0
 
-nbOfEmployee.times do
-      Employee.create(
-        [
-          {
-          email: Faker::Internet.safe_email,
-          password: Faker::Internet.password,
-          firstName: Faker::Name.first_name,
-          lastName: Faker::Name.last_name,
-          user_id: i +=1
-     }
-    ]
-     )
+# nbOfEmployee.times do
+#       Employee.create(
+#         [
+#           {
+#           email: Faker::Internet.safe_email,
+#           password: Faker::Internet.password,
+#           firstName: Faker::Name.first_name,
+#           lastName: Faker::Name.last_name,
+#           user_id: i +=1
+#      }
+#     ]
+#      )
 
-    end
+#     end
 
 
 y = 0
 q = nbOfCustomer
 
 
-nbOfCustomer.times do
+# nbOfCustomer.times do
 
-      customer = Customer.create(
+#       customer = Customer.create(
         
-          contact_email: Faker::Internet.safe_email,
-          contact_full_name: Faker::FunnyName.name,
-          contact_phone: Faker::PhoneNumber.cell_phone,
-          business_name: Faker::Company.name,
-          user_id: i +=1 ,
-          address_id: y +=1
-          )
+#           contact_email: Faker::Internet.safe_email,
+#           contact_full_name: Faker::FunnyName.name,
+#           contact_phone: Faker::PhoneNumber.cell_phone,
+#           business_name: Faker::Company.name,
+#           user_id: i +=1 ,
+#           address_id: y +=1
+#           )
     
-        nbOfBuilding = rand(1..2)
-          
-        nbOfBuilding.times do
-
-         building = Building.create(
+#         nbOfBuilding = rand(1..2)
+ 
+#          building = Building.create(
     
         
-          building_administrator_email: Faker::Internet.safe_email,
-          building_administrator_full_name: Faker::Name.first_name,
-          building_administrator_phone: Faker::PhoneNumber.cell_phone,
-          building_technical_contact_name: Faker::Name.first_name,
-          building_technical_contact_email: Faker::Internet.safe_email,
-          building_technical_contact_phone: Faker::PhoneNumber.cell_phone,
-          customer_id: customer.id,
-          address_id: q +=1
+#           building_administrator_email: Faker::Internet.safe_email,
+#           building_administrator_full_name: Faker::Name.first_name,
+#           building_administrator_phone: Faker::PhoneNumber.cell_phone,
+#           building_technical_contact_name: Faker::Name.first_name,
+#           building_technical_contact_email: Faker::Internet.safe_email,
+#           building_technical_contact_phone: Faker::PhoneNumber.cell_phone,
+#           customer_id: customer.id,
+#           address_id: q +=1
     
-          )
+#           )
 
-           1.times do
+#            1.times do
             
-           BuildingDetail.create(
+#            BuildingDetail.create(
         
-           building_id: building.id,
-           information_key: Faker::Name.first_name,
-           value: Faker::Lorem.paragraph
-           )
+#            building_id: building.id,
+#            information_key: Faker::Name.first_name,
+#            value: Faker::Lorem.paragraph
+#            )
 
-          nbOfBattery = rand(1..2)
-          selectEmploye = rand(1..nbOfEmployee)
+#           nbOfBattery = rand(1..2)
+#           selectEmploye = rand(1..nbOfEmployee)
                     
-          nbOfBattery.times do
+#           nbOfBattery.times do
 
-          battery = Battery.create(
-            building_id: building.id,
-            employee_id: selectEmploye = rand(1..nbOfEmployee),
-            building_type: [:Residential, :Commercial, :Corporate, :Hybrid].sample,
-            status: [:Active, :Inactive].sample,
-            operations_certificate: Faker::Superhero.descriptor,
-            information: Faker::Movies::Hobbit.character, 
-            notes: Faker::Beer.brand,
-            date_service_since: Faker::Date.backward(days: 1065),
-            date_last_inspection: Faker::Date.backward(days: 1065)
+#           battery = Battery.create(
+#             building_id: building.id,
+#             employee_id: selectEmploye = rand(1..nbOfEmployee),
+#             building_type: [:Residential, :Commercial, :Corporate, :Hybrid].sample,
+#             status: [:Active, :Inactive].sample,
+#             operations_certificate: Faker::Superhero.descriptor,
+#             information: Faker::Movies::Hobbit.character, 
+#             notes: Faker::Beer.brand,
+#             date_service_since: Faker::Date.backward(days: 1065),
+#             date_last_inspection: Faker::Date.backward(days: 1065)
     
 
-          )
+#           )
 
-          nbOfColumn = rand(1..5)
+#           nbOfColumn = rand(1..5)
           
-          nbOfColumn.times do
+#           nbOfColumn.times do
           
-          nbOfFloor = rand(1..50)
+#           nbOfFloor = rand(1..50)
 
-          column = Column.create(
-            battery_id: battery.id,
-            building_type: [:Residential, :Commercial, :Corporate, :Hybrid].sample,
-            floors_served: nbOfFloor,
-            status: [:Active, :Inactive].sample,
-            information: Faker::Movies::Hobbit.character, 
-            notes: Faker::Lorem.paragraph
+#           column = Column.create(
+#             battery_id: battery.id,
+#             building_type: [:Residential, :Commercial, :Corporate, :Hybrid].sample,
+#             floors_served: nbOfFloor,
+#             status: [:Active, :Inactive].sample,
+#             information: Faker::Movies::Hobbit.character, 
+#             notes: Faker::Lorem.paragraph
   
-          )
+#           )
 
-          nbOfElevator = rand(1..10)
+#           nbOfElevator = rand(1..10)
         
-          nbOfElevator.times do
+#           nbOfElevator.times do
         
-          elveator = Elevator.create(
+#           elveator = Elevator.create(
 
-            column_id: column.id,
-            serial_number: Faker::IDNumber.valid_south_african_id_number,
-            model: [:Standard, :Premium, :Excelium].sample,
-            building_type: [:Residential, :Commercial, :Corporate, :Hybrid].sample,
-            status: [:Active, :Inactive, :Intervention].sample,
-            information: Faker::Movies::Hobbit.character, 
-            date_service_since: Faker::Date.backward(days: 1065),
-            date_last_inspection: Faker::Date.backward(days: 1065),
-            inspection_certificate: [:Yes, :No].sample,
-            notes: Faker::Lorem.paragraph
-          )
+#             column_id: column.id,
+#             serial_number: Faker::IDNumber.valid_south_african_id_number,
+#             model: [:Standard, :Premium, :Excelium].sample,
+#             building_type: [:Residential, :Commercial, :Corporate, :Hybrid].sample,
+#             status: [:Active, :Inactive, :Intervention].sample,
+#             information: Faker::Movies::Hobbit.character, 
+#             date_service_since: Faker::Date.backward(days: 1065),
+#             date_last_inspection: Faker::Date.backward(days: 1065),
+#             inspection_certificate: [:Yes, :No].sample,
+#             notes: Faker::Lorem.paragraph
+#           )
 
 
-          end
-     end
-    end
-    end
+#           end
+#      end
+#     end
+#     end
 
-     end
-  end
+#      end
+#   end
+         
+#         nbOfBuilding.times do
 
 
 
