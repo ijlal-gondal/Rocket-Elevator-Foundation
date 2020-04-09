@@ -53,9 +53,18 @@ Rails.application.routes.draw do
   get 'employee' => 'pages#employee'
   
   get 'dashboard' => 'pages#dashboard'
+  
+  # get '/intervention' => 'interventions#new'
+  # get '/intervention' => 'intervention#index'
+  # get 'intervention/index' => 'intervention#index'
+  post '/intervention', :to => 'interventions#create'  
+  # get 'intervention' => 'intervention#new'
 
 
   resources :geolocations
+  # resources :interventions do
+  # end
 
+  get '/interventions', :to => 'interventions#new'
   
 end

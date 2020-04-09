@@ -5,6 +5,7 @@ class Customer < ApplicationRecord
   has_many :leads
 
   has_many :buildings
+  has_many :interventions
 
   # IF using rake db:seed, comment this line to avoid an error
   after_create :upload_lead_files
