@@ -1,8 +1,8 @@
 class Intervention < ActiveRecord::Base
-    belongs_to :building, optional: true
-    belongs_to :employees, optional: true
-    belongs_to :batteries, optional: true
-    belongs_to :columns, optional: true
-    belongs_to :elevators, optional: true
-    belongs_to :customers
+    belongs_to :building, foreign_key: 'BuildingID'
+    belongs_to :employee, foreign_key: 'EmployeeID'
+    belongs_to :battery, foreign_key: 'BatteryID'
+    belongs_to :column,  foreign_key: 'ColumnID'
+    belongs_to :elevator , foreign_key: 'ElevatorID'
+    belongs_to :customer, foreign_key: 'CustomerID'
 end

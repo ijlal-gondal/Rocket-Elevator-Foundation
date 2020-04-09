@@ -25,15 +25,15 @@
 			</div>
 			<div class="field">
 				<%= f.label :BatteryID, "Battery" %><br />
-				<%= f.grouped_collection_select :BatteryID, Building.order(:id), :batteries, :id, :id, :id, include_blank: true %>
+				<%= f.grouped_collection_select :BatteryID, Building.order(:id), :batteries, :id, :building_id, :id, include_blank: true %>
 			</div>
 			<div class="field">
 				<%= f.label :ColumnID, "Column" %><br />
-				<%= f.grouped_collection_select :ColumnID, Battery.order(:id), :columns, :id, :id, :id, include_blank: true %>
+				<%= f.grouped_collection_select :ColumnID, Battery.order(:id), :columns, :id, :battery_id, :id, include_blank: true %>
 			</div>
 			<div class="field">
 				<%= f.label :ElevatorID, "Elevator" %><br />
-				<%= f.grouped_collection_select :ElevatorID, Column.order(:id), :elevators, :id, :id, :id, include_blank: true %>
+				<%= f.grouped_collection_select :ElevatorID, Column.order(:id), :elevators, :id, :column_id, :id, include_blank: true %>
 			</div>				
                                                       
                 <!-- /entity selector -->
@@ -90,8 +90,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 
-client = $('#intervention_CustomerID').html()
-//  console.log(client)
+clients = $('#intervention_CustomerID').html()
+//  console.log(clients)
 buildings = $('#intervention_BuildingID').html()
 // console.log(buildings)
 batteries = $('#intervention_BatteryID').html()
@@ -103,14 +103,13 @@ elevators = $('#intervention_ElevatorID').html()
 
 
   $('#intervention_BuildingID').parent().hide();
+    $('#intervention_BatteryID').parent().hide();
 
   $('#intervention_CustomerID').change(function() {
 
   client = $('#intervention_CustomerID :selected').text();
 
-  escaped_client = client.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
-
-  options = $(buildings).filter("optgroup[label='" + escaped_client + "']").html();
+  options = $(buildings).filter("optgroup[label='" + client + "']").html();
 
   if (options) {
     $('#intervention_BuildingID').html(options);
@@ -118,6 +117,24 @@ elevators = $('#intervention_ElevatorID').html()
   } else {
     $('#intervention_BuildingID').empty();
     $('#intervention_BuildingID').parent().hide();
+  }
+
+});
+
+
+
+  $('#intervention_BuildingID').change(function() {
+
+  building = $('#intervention_BuildingID :selected').text();
+
+  options = $(batteries).filter("optgroup[label='" + building + "']").html();
+
+  if (options) {
+    $('#intervention_BatteryID').html(options);
+    $('#intervention_BatteryID').parent().show();
+  } else {
+    $('#intervention_BatteryID').empty();
+    $('#intervention_BatteryID').parent().hide();
   }
 
 });

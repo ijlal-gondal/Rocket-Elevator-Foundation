@@ -35,7 +35,7 @@ def create
     @intervention = Intervention.new(intervention_params)
     puts ("intervention parameters: ")
     puts  intervention_params
-
+    pp @intervention
     respond_to do |format|
       if @intervention.save
         p ("+++++++++++++++++ Save OK +++++++++++++++++")
@@ -44,12 +44,13 @@ def create
         format.html { redirect_to @intervention, notice: 'Intervention was successfully created.' }
         format.json { render :show, status: :created, location: @intervention }
       else
+        pp @intervention
         p ("$$$$$$$$$$$$ not saved - from controller $$$$$$$$$$$$$$$")
         format.html { render :new }
         format.json { render json: @intervention.errors, status: :unprocessable_entity }
       end
     end
 
-    end 
+ end 
+
 end
-  
