@@ -29,3 +29,4 @@ class QuotesController < ApplicationController
       redirect_to "/submission"
     end
   end 
+end
