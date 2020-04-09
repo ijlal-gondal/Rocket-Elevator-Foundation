@@ -39,7 +39,7 @@
                 <!-- /entity selector -->
 			</div>
 		</div>
-
+ <%= f.hidden_field :Author, { :value => current_user.id } %>
 		<div class="row">
 			<div class="col-md-12 d-flex justify-content-center">
 				<!-- employee selector--> 
@@ -103,7 +103,7 @@ elevators = $('#intervention_ElevatorID').html()
 
 
   $('#intervention_BuildingID').parent().hide();
-    $('#intervention_BatteryID').parent().hide();
+  $('#intervention_BatteryID').parent().hide();
 
   $('#intervention_CustomerID').change(function() {
 

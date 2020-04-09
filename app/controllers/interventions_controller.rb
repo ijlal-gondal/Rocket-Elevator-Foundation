@@ -41,7 +41,7 @@ def create
         p ("+++++++++++++++++ Save OK +++++++++++++++++")
         puts ("intervention parameters: ")
         # puts  intervention_params
-        format.html { redirect_to @intervention, notice: 'Intervention was successfully created.' }
+        format.html { redirect_to "/interventions", notice: 'Intervention was successfully created.' }
         format.json { render :show, status: :created, location: @intervention }
       else
         pp @intervention
