@@ -16,43 +16,44 @@
 				<!-- entity selector--> 
 			<%= form_for @intervention do |f| %>
             <div class="field">
-			<%= f.label :CustomerID, "Client" %><br />
+			<%= f.label :"Client Name" %><br />
              <%= f.collection_select :CustomerID, Customer.order(:id), :id, :contact_full_name, include_blank: true  %>
             </div>
 			<div class="field" id="Building">
-				<%= f.label :BuildingID, "Building" %><br />
+				<%= f.label :"Building ID" %><br />
 				<%= f.grouped_collection_select  :BuildingID, Customer.order(:id), :buildings, :contact_full_name, :id, :id, include_blank: true %>
 			</div>
 			<div class="field">
-				<%= f.label :BatteryID, "Battery" %><br />
+				<%= f.label :"Battery ID" %><br />
 				<%= f.grouped_collection_select :BatteryID, Building.order(:id), :batteries, :id, :building_id, :id, include_blank: true %>
 			</div>
 			<div class="field">
-				<%= f.label :ColumnID, "Column" %><br />
+				<%= f.label :"Column ID" %><br />
 				<%= f.grouped_collection_select :ColumnID, Battery.order(:id), :columns, :id, :battery_id, :id, include_blank: true %>
 			</div>
 			<div class="field">
-				<%= f.label :ElevatorID, "Elevator" %><br />
+				<%= f.label :"Elevator ID" %><br />
 				<%= f.grouped_collection_select :ElevatorID, Column.order(:id), :elevators, :id, :column_id, :id, include_blank: true %>
 			</div>				
                                                       
-                <!-- /entity selector -->
+
+
+				<!-- Author selection--> 
 			</div>
 		</div>
  <%= f.hidden_field :Author, { :value => current_user.id } %>
 		<div class="row">
 			<div class="col-md-12 d-flex justify-content-center">
-				<!-- employee selector--> 
+				<!-- employee selection--> 
             <div class="field">
-			<%= f.label :EmployeeID, "Employee" %><br />
+			<%= f.label :"Employee Name" %><br />
              <%= f.collection_select :EmployeeID, Employee.order(:id), :id, :firstName, {:prompt => "None"}, include_blank: true %>
             </div>                                                   
-                <!-- /employee selector -->
+                <!-- / Description Select -->
 			</div>
 		</div>       
 		<div class="row">
-			<%# <input class="basicInfos" name ="Description" type="text" id="description" placeholder="Description*" required> %>
-    <%= f.label :Description %><br />
+    <%= f.label :"Description: " %><br />
     <%= f.text_field :Report %>
 		</div>
 
@@ -60,11 +61,11 @@
 			<div class="col-md-12 d-flex justify-content-center addTo">
 				<%# BUTTON SUBMIT %>
 				  <div class="actions"><%= f.submit %></div>
-				<%# <input class="btn btn-outline-success btn-lg submitBtn submission_form" type="submit" value="Add to the intervention list" /> %>
+
 			</div>
 		</div>
 	</div>
-	<!-- /result inputs -->
+
 </div>
 <%end%>
   <%= link_to('Logout', destroy_user_session_path, method: :delete) %>   
@@ -86,6 +87,8 @@
 <h2>	<%= link_to('Login', new_user_session_path) %>  </h2>
 </div>
 <%end%>
+	<!-- /JavaScript/JQuery inputs -->
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
