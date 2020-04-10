@@ -114,12 +114,15 @@
 									</li>
 									</li>
 											</li>
-											<li><!-- Intervention -->
+
+
+<% if user_signed_in? && current_user.is_employee(current_user.email) %> 
+											<li><!-- Intervention -->											
 										<a href="/interventions">
 											INTERVENTION
 										</a>
 									</li>								
-
+<% end %>
 									<li>
 										<div class="container-fluid unconnected">
 											<div class="row">

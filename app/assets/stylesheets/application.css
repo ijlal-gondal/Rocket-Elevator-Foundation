@@ -41,3 +41,10 @@
 	font-family: 'Name of Font';
 	src: url('/path-to/font-file.file-extension')
  }
+
+ .alert-success{
+	position: absolute;
+	z-index: 9999;
+	width: 100%;
+	top: -1450px;
+}
