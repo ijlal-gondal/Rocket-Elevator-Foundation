@@ -65,7 +65,7 @@ def create
     ZendeskAPI::Ticket.create!(@client,
       :subject => "Intervention alert from #{current_user.firstName}, with ID #{@intervention.Author}",
       :description => "Create Ticket",
-      :comment => { :value => "The requester #{current_user.firstName} from company #{@intervention.customer.business_name} has made a service request for Building #{@intervention.BuildingID} with Battery #{@intervention.BatteryID}, Column #{@intervention.ColumnID}, and Elevator ID #{@intervention.ElevatorID}, has designated employee #{@intervention.employee.firstName} with following details: #{@intervention.Report}." },
+      :comment => { :value => "The requester #{current_user.firstName} from company #{@intervention.customer.business_name} has made a service request for BuildingID #{@intervention.BuildingID} , with BatteryID #{@intervention.BatteryID}, ColumnID #{@intervention.ColumnID}, and ElevatorID #{@intervention.ElevatorID}, has designated employee #{@intervention.employee.firstName} with following details: #{@intervention.Report}." },
       :type => "question",
       :priority => "urgent")
   end

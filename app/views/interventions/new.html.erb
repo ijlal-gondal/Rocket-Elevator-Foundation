@@ -45,7 +45,7 @@
 				<!-- employee selector--> 
             <div class="field">
 			<%= f.label :EmployeeID, "Employee" %><br />
-             <%= f.collection_select :EmployeeID, Employee.order(:id), :id, :firstName, include_blank: true  %>
+             <%= f.collection_select :EmployeeID, Employee.order(:id), :id, :firstName, {:prompt => "None"}, include_blank: true %>
             </div>                                                   
                 <!-- /employee selector -->
 			</div>
@@ -105,6 +105,7 @@ elevators = $('#intervention_ElevatorID').html()
   $('#intervention_BuildingID').parent().hide();
   $('#intervention_BatteryID').parent().hide();
   $('#intervention_ColumnID').parent().hide();
+  $('#intervention_ElevatorID').parent().hide();
 
   $('#intervention_CustomerID').change(function() {
 
@@ -113,6 +114,10 @@ elevators = $('#intervention_ElevatorID').html()
   options = $(buildings).filter("optgroup[label='" + client + "']").html();
 
   if (options) {
+	//  console.log('here1');
+	 blank_selected_option = '<option selected="selected"></option>'
+	 options = blank_selected_option + options;
+	//   console.log(options);
     $('#intervention_BuildingID').html(options).parent().show();
 
   } else {
@@ -123,7 +128,6 @@ elevators = $('#intervention_ElevatorID').html()
 });
 
 
-
   $('#intervention_BuildingID').change(function() {
 
   building = $('#intervention_BuildingID :selected').text();
@@ -131,42 +135,52 @@ elevators = $('#intervention_ElevatorID').html()
   options = $(batteries).filter("optgroup[label='" + building + "']").html();
 
   if (options) {
-    $('#intervention_BatteryID').html(options);
-    $('#intervention_BatteryID').parent().show();
+	 blank_selected_option = '<option selected="selected"></option>'
+	 options = blank_selected_option + options;
+    $('#intervention_BatteryID').html(options).parent().show();
+
   } else {
-    $('#intervention_BatteryID').empty();
-    $('#intervention_BatteryID').parent().hide();
+    $('#intervention_BatteryID').empty().parent().hide();
   }
 
 });
 
-// $('#intervention_BuildingID').parent().hide()
-//  $("#intervention_CustomerID").change(function(){
-//    client = $('#intervention_CustomerID :selected').text()
-//    escaped_client = client.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
-//    options = $(buildings).filter("optgroup[label='#{escaped_client}']").html()
-//    if (options == true) {
-//    $('#intervention_BuildingID').html(options)
-//    $('#intervention_BuildingID').parent().show()  }
-//    else{ 
-//    $('#intervention_BuildingID').empty()
-//    $('#intervention_BuildingID').parent().hide() }
-   
-//    })
-//   $('#intervention_BuildingID').hide()
-//   buildings = $('#intervention_BuildingID').html()
-//   console.log(buildings)
-//   $('#intervention_CustomerID').change(function () {
-// 	    client = $('#intervention_CustomerID :selected').text()
-//   escaped_client = client.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
-//   options = $(buildings).filter("optgroup[label='#{escaped_client}']").html()
-//   if options 
-//   $('#intervention_BuildingID').html(options)
-//   $('#intervention_BuildingID').parent().show()
-//   else
-//   $('#intervention_BuildingID').empty()
-//   $('#intervention_BuildingID').parent().hide()
-//   })
+  $('#intervention_BatteryID').change(function() {
+
+  battery = $('#intervention_BatteryID :selected').text();
+
+  options = $(columns).filter("optgroup[label='" + battery + "']").html();
+
+  if (options) {
+	 none_selected_option = '<option selected="selected" value="None">None</option>'
+	 options = none_selected_option + options;
+    $('#intervention_ColumnID').html(options).parent().show();
+
+  } else {
+    $('#intervention_ColumnID').empty().parent().hide();
+  }
+
+});
+
+  $('#intervention_ColumnID').change(function() {
+
+  column = $('#intervention_ColumnID :selected').text();
+
+  options = $(elevators).filter("optgroup[label='" + column + "']").html();
+
+  if (options) {
+	 none_selected_option = '<option selected="selected" value="None">None</option>'
+	 options = none_selected_option + options;
+    $('#intervention_ElevatorID').html(options).parent().show();
+
+  } else {
+    $('#intervention_ElevatorID').empty().parent().hide();
+  }
+
+});
+
+
+
 
 // intervention_BatteryID, intervention_ColumnID, intervention_ElevatorID, 
 </script>
