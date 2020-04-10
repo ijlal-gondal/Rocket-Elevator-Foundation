@@ -2,7 +2,8 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'http'
-
+gem 'ed25519'
+gem 'bcrypt_pbkdf' 
 
 ruby '2.6.3'
 

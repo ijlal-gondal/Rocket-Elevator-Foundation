@@ -1,5 +1,6 @@
 class InterventionsController < ApplicationController
     skip_forgery_protection
+    after_action :function_send_ticket, only: [:create]
 def index
     @interventions = Intervention.all
     @buildings = Building.All
@@ -53,4 +54,21 @@ def create
 
  end 
 
+ def function_send_ticket
+    @client = ZendeskAPI::Client.new do |config|
+      config.url = "https://mtigs.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
+      # Basic / Token Authentication
+      config.username = "ijlal.gondal@mtigs.com"
+      # config.token = "Zendesk_Token"
+      config.token = ENV['Zendek_Token']
+    end
+    ZendeskAPI::Ticket.create!(@client,
+      :subject => "Intervention alert from #{current_user.firstName}, with ID #{@intervention.Author}",
+      :description => "Create Ticket",
+      :comment => { :value => "The requester #{current_user.firstName} from company #{@intervention.customer.business_name} has made a service request for Building #{@intervention.BuildingID} with Battery #{@intervention.BatteryID}, Column #{@intervention.ColumnID}, and Elevator ID #{@intervention.ElevatorID}, has designated employee #{@intervention.employee.firstName} with following details: #{@intervention.Report}." },
+      :type => "question",
+      :priority => "urgent")
+  end
+
 end
+

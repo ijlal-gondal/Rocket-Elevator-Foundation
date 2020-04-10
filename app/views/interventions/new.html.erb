@@ -104,6 +104,7 @@ elevators = $('#intervention_ElevatorID').html()
 
   $('#intervention_BuildingID').parent().hide();
   $('#intervention_BatteryID').parent().hide();
+  $('#intervention_ColumnID').parent().hide();
 
   $('#intervention_CustomerID').change(function() {
 
@@ -112,11 +113,11 @@ elevators = $('#intervention_ElevatorID').html()
   options = $(buildings).filter("optgroup[label='" + client + "']").html();
 
   if (options) {
-    $('#intervention_BuildingID').html(options);
-    $('#intervention_BuildingID').parent().show();
+    $('#intervention_BuildingID').html(options).parent().show();
+
   } else {
-    $('#intervention_BuildingID').empty();
-    $('#intervention_BuildingID').parent().hide();
+    $('#intervention_BuildingID').empty().parent().hide();
+   
   }
 
 });
