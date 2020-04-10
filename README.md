@@ -2,12 +2,14 @@
 # Rocket_Elevators_Foundation
 Week 9 : Consolidation for some and new beginnings for others
 
-Site is now online at ijlalgondal.com
+Site is now online at www.ijlalgondal.com
 
 Dropdowns, Table and ZenDesk: 
 
 
 When you are logged as a employee, you can go to the page intervention and make an intervention request. 
+
+username: ijlal36@gmail.com////password: 123456
 
 The dropdowns let you select client>building>battery>column>elevator in that sequence.
 
