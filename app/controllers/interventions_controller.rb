@@ -31,7 +31,7 @@ def create
         format.html { redirect_to "/interventions", notice: 'Intervention was successfully created.' }
         format.json { render :show, status: :created, location: @intervention }
       else
-        pp @intervention
+        # pp @intervention
         # p ("$$$$$$$$$$$$ not saved - from controller $$$$$$$$$$$$$$$")
         format.html { render :new }
         format.json { render json: @intervention.errors, status: :unprocessable_entity }

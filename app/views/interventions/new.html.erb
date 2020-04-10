@@ -4,12 +4,13 @@
 <% if user_signed_in? && current_user.is_employee(current_user.email) %> 
   <li>
 
-  
-
 <br/><br/><br/><br/><br/>
+
 <%= form_tag "/intervention", method: 'post' do %>
 <div id="formbackground" style="background-image: url('/assets/background_elevator.jpg');">
 	<div class="container  formStyle">
+	  <h1> Intervention Request Form </h1>
+	  <h3> Please start by selecting the client</h3>
     <br/><br/><br/><br/><br/><br/><br/><br/>
 		<div class="row">
 			<div class="col-md-12 d-flex justify-content-center">
@@ -17,23 +18,23 @@
 			<%= form_for @intervention do |f| %>
             <div class="field">
 			<%= f.label :"Client Name" %><br />
-             <%= f.collection_select :CustomerID, Customer.order(:id), :id, :contact_full_name, include_blank: true  %>
+             <%= f.collection_select :CustomerID, Customer.order(:id), :id, :contact_full_name, include_blank: true, :required => true %>
             </div>
 			<div class="field" id="Building">
 				<%= f.label :"Building ID" %><br />
-				<%= f.grouped_collection_select  :BuildingID, Customer.order(:id), :buildings, :contact_full_name, :id, :id, include_blank: true %>
+				<%= f.grouped_collection_select  :BuildingID, Customer.order(:id), :buildings, :contact_full_name, :id, :id, include_blank: true, :required => true %>
 			</div>
 			<div class="field">
 				<%= f.label :"Battery ID" %><br />
-				<%= f.grouped_collection_select :BatteryID, Building.order(:id), :batteries, :id, :building_id, :id, include_blank: true %>
+				<%= f.grouped_collection_select :BatteryID, Building.order(:id), :batteries, :id, :building_id, :id, include_blank: true, :required => true %>
 			</div>
 			<div class="field">
 				<%= f.label :"Column ID" %><br />
-				<%= f.grouped_collection_select :ColumnID, Battery.order(:id), :columns, :id, :battery_id, :id, include_blank: true %>
+				<%= f.grouped_collection_select :ColumnID, Battery.order(:id), :columns, :id, :battery_id, :id, include_blank: true , :required => true%>
 			</div>
 			<div class="field">
 				<%= f.label :"Elevator ID" %><br />
-				<%= f.grouped_collection_select :ElevatorID, Column.order(:id), :elevators, :id, :column_id, :id, include_blank: true %>
+				<%= f.grouped_collection_select :ElevatorID, Column.order(:id), :elevators, :id, :column_id, :id, include_blank: true, :required => true %>
 			</div>				
                                                       
 
@@ -47,14 +48,14 @@
 				<!-- employee selection--> 
             <div class="field">
 			<%= f.label :"Employee Name" %><br />
-             <%= f.collection_select :EmployeeID, Employee.order(:id), :id, :firstName, {:prompt => "None"}, include_blank: true %>
+             <%= f.collection_select :EmployeeID, Employee.order(:id), :id, :firstName, {:prompt => "None"}, include_blank: true , :required => true%>
             </div>                                                   
                 <!-- / Description Select -->
 			</div>
 		</div>       
 		<div class="row">
     <%= f.label :"Description: " %><br />
-    <%= f.text_field :Report %>
+    <%= f.text_field :Report, :required => true %>
 		</div>
 
 		<div classs="row">
@@ -80,7 +81,7 @@
 	<div class="container">
 	    <br/><br/><br/><br/><br/><br/><br/><br/>
 
-<h1> Please Log in by pressing the button below to acess this section, Thank you!</h1>
+<h1> Only emloyess can log in by pressing the button below to acess this section, Thank you!</h1>
 
 
 </div>
@@ -182,8 +183,4 @@ elevators = $('#intervention_ElevatorID').html()
 
 });
 
-
-
-
-// intervention_BatteryID, intervention_ColumnID, intervention_ElevatorID, 
 </script>
