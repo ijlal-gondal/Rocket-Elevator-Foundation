@@ -21,3 +21,7 @@ you can view Zendesk tickets at  https://mtigs.zendesk.com/access/unauthenticate
 
 you can view 'interventions' table on database under 'IjlalGondal'
 
+
+Here is the link for REST API:
+
+https://github.com/ijlal-gondal/REST_API
