@@ -106,11 +106,14 @@ elevators = $('#intervention_ElevatorID').html()
 // console.log(elevators)
 
 
-  $('#intervention_BuildingID').parent().hide();
-  $('#intervention_BatteryID').parent().hide();
-  $('#intervention_ColumnID').parent().hide();
-  $('#intervention_ElevatorID').parent().hide();
 
+
+
+
+  $('#intervention_BuildingID').parent().hide();
+ $('#intervention_BatteryID').parent().hide();
+   $('#intervention_ColumnID').parent().hide();
+     $('#intervention_ElevatorID').parent().hide();
   $('#intervention_CustomerID').change(function() {
 
   client = $('#intervention_CustomerID :selected').text();
@@ -129,8 +132,6 @@ elevators = $('#intervention_ElevatorID').html()
    
   }
 
-});
-
 
   $('#intervention_BuildingID').change(function() {
 
@@ -147,7 +148,7 @@ elevators = $('#intervention_ElevatorID').html()
     $('#intervention_BatteryID').empty().parent().hide();
   }
 
-});
+
 
   $('#intervention_BatteryID').change(function() {
 
@@ -164,7 +165,6 @@ elevators = $('#intervention_ElevatorID').html()
     $('#intervention_ColumnID').empty().parent().hide();
   }
 
-});
 
   $('#intervention_ColumnID').change(function() {
 
@@ -182,5 +182,15 @@ elevators = $('#intervention_ElevatorID').html()
   }
 
 });
+
+});
+
+});
+
+});
+
+
+
+
 
 </script>
