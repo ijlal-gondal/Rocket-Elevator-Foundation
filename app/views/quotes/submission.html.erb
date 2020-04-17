@@ -3,11 +3,11 @@
 <!--*******************************************************************************************************************************************************************************************************************************************
 	*******************************************************************************************************************************************************************************************************************************************-->
 <!-- SUBMISSION FORM -->
+	<br/><br/><br/>
 	<% if user_signed_in? %>
   <li>
+  	<br/>
   <%= link_to('Logout', destroy_user_session_path, method: :delete) %>   
-  
-
 
 <%= form_tag "/submission", method: 'post' do %>
 <div id="formbackground" style="background-image: url('/assets/background_elevator.jpg');">
@@ -91,10 +91,10 @@
 
 	</li>
 	<% else %>
+
 	<li>
 	<%= link_to('Login', new_user_session_path) %>  
 	<%= form_tag "/submission", method: 'post' do %>
-
 <div id="formbackground" style="background-image: url('/assets/background_elevator.jpg');">
 	<div class="container  formStyle">
 		<div class="row">
