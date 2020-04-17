@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   require "send_grid_mailer/custom_send_api"
 
   before_action :authenticate_user!, only: [:dashboard]
-  after_action :sendEmail, :function_send_ticket, only: [:create]
+  # after_action :sendEmail, :function_send_ticket, only: [:create]
 
   def index
   end
