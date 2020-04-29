@@ -10,7 +10,7 @@ ruby '2.6.3'
 
 gem 'figaro'
 
-
+gem 'rspec-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 5.2.4", ">= 5.2.4.1"
