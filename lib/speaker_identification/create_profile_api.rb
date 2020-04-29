@@ -10,8 +10,7 @@ module SpeakerIdentification
     puts "office"
 
 uri = URI('https://westus.api.cognitive.microsoft.com/spid/v1.0/identificationProfiles')
-uri.query = URI.encode_www_form({
-})
+
 
 request = Net::HTTP::Post.new(uri.request_uri)
 # Request headers
