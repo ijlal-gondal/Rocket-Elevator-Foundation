@@ -33,6 +33,8 @@ puts response["operation-location"]
 response.each_header do |key, value|
     p "#{key} => #{value}"
 end
+puts response.header
+
 end
 
 end

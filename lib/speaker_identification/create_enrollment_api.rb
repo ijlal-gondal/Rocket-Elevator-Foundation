@@ -32,6 +32,10 @@ puts response.body
 puts response["content-type"]
 puts response.code
 puts response["operation-location"]
+response["content-type"]
+response["operation-location"]
+puts response["operation-location"]
+puts response.code
 # response.each_header do |key, value|
 #     p "#{key} => #{value}"
 # end
