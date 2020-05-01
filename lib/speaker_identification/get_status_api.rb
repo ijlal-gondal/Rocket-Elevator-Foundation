@@ -7,7 +7,7 @@ module SpeakerIdentification
         puts "beginning test"
 
 
-operationId = "b3d81d8d-ae96-4e5a-9e5f-6e4882afc43a"
+operationId = "16ad63f6-1ba6-4d80-b542-1c0f9f605a06"
 
 uri = URI("https://westus.api.cognitive.microsoft.com/spid/v1.0/operations/#{operationId}")
 

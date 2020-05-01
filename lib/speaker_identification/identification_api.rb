@@ -18,7 +18,7 @@ request['Content-Type'] = 'application/octet-stream'
 # Request headers
 request['Ocp-Apim-Subscription-Key'] = ENV['Subscription_Key']
 # Request body
-request.body = File.read('public/012.wav')
+request.body = File.read('public/convo10.wav')
 
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
     http.request(request)
