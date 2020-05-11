@@ -72,7 +72,9 @@ module SpeakerIdentification
             request = Net::HTTP::Post.new(uri.request_uri)
             request['Content-Type'] = 'application/octet-stream'
             request['Ocp-Apim-Subscription-Key'] = ENV['Subscription_Key']
+
             request.body = File.read('public/convo3.wav')
+
             request.body
         end
 
@@ -88,7 +90,9 @@ module SpeakerIdentification
             # Request headers
             request['Ocp-Apim-Subscription-Key'] = ENV['Subscription_Key']
             # Request body
+
             request.body = File.read('public/convo3.wav')
+
 
             response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
                 http.request(request)

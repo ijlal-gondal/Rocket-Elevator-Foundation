@@ -26,7 +26,9 @@ describe "Identification" do
             end
 
         it "Test if we have the good request body" do
+
             expect(identification.testRequestBody).to eq(File.read('public/convo3.wav'))
+
             end
 
         it "Let's see if we can test it. It's normal to have error code 401, because it work only in the terminal" do
