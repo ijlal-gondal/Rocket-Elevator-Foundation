@@ -1,7 +1,7 @@
 class InterventionsController < ApplicationController
 
     skip_forgery_protection
-    after_action :function_send_ticket, only: [:create]
+    after_action only: [:create]
 
 
 def intervention_params
