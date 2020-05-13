@@ -25,7 +25,7 @@ class QuotesController < ApplicationController
     )
     #ON SEND ->
     if @quote.try(:save!)
-      @quote.ticket_quote
+      # @quote.ticket_quote
       redirect_to "/submission"
     end
   end 
