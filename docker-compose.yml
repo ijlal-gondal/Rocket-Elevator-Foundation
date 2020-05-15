@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  ruby_dev:
+    build: .
+    container_name: ruby_container
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/home/app
+    db:
+        image: "mysql:5.7"
+        environment:
+        DB_DATABASE: Rocket_Elevators_Information_System_development
+        DB_HOST: database-1.cznhlhbejsly.ca-central-1.rds.amazonaws.com
+        MYSQL_USERNAME: codeboxx
+        MYSQL_PASSWORD: Codeboxx1!
+        ports: "3306"
