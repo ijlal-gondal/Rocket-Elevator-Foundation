@@ -5,7 +5,7 @@ gem 'http'
 gem 'ed25519'
 gem 'bcrypt_pbkdf' 
 
-ruby '2.6.3'
+ruby '2.5.1'
 
 
 gem 'figaro'
