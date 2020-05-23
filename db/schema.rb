@@ -217,6 +217,13 @@ ActiveRecord::Schema.define(version: 2020_04_07_135028) do
     t.index ["customer_id"], name: "index_leads_on_customer_id"
   end
 
+  create_table "links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "url"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "firstName"
     t.string "phoneNumber"

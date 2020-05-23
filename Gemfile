@@ -5,12 +5,12 @@ gem 'http'
 gem 'ed25519'
 gem 'bcrypt_pbkdf' 
 
-ruby '2.5.1'
-
+ruby '2.6.3'
+gem 'newrelic_rpm'
 
 gem 'figaro'
 
-
+gem 'rspec-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 5.2.4", ">= 5.2.4.1"
