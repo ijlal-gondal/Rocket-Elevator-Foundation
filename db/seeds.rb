@@ -47,27 +47,27 @@ nbOfCustomer = 30
 
 #   end
 
-  # Geolocation.create!([
-  #   { "name": "Buckingham Palace", "latitude": "51.501564","longitude": "-0.141944"},
-  #   { "name": "Westminster Abbey", "latitude": "51.499581", "longitude": "-0.127309"},
-  #   { "name": "Big Ben", "latitude": "51.500792", "longitude": "-0.124613"}
-  #   ])
+#   Geolocation.create!([
+#     { "name": "Buckingham Palace", "latitude": "51.501564","longitude": "-0.141944"},
+#     { "name": "Westminster Abbey", "latitude": "51.499581", "longitude": "-0.127309"},
+#     { "name": "Big Ben", "latitude": "51.500792", "longitude": "-0.124613"}
+#     ])
 
 
-  # nbOfUser.times do
-  #    User.create([{
-  #        email: Faker::Internet.safe_email,
-  #        password: Faker::Internet.password,
-  #        firstName: Faker::Name.first_name,
-  #        lastName: Faker::Name.last_name,
-  #        phoneNumber: Faker::PhoneNumber.cell_phone,
-  #        companyName: Faker::Company.name
+#   nbOfUser.times do
+#      User.create([{
+#          email: Faker::Internet.safe_email,
+#          password: Faker::Internet.password,
+#          firstName: Faker::Name.first_name,
+#          lastName: Faker::Name.last_name,
+#          phoneNumber: Faker::PhoneNumber.cell_phone,
+#          companyName: Faker::Company.name
          
-  #   }])
-  # end
+#     }])
+#   end
 
 
-i = 0
+# i = 0
 
 # nbOfEmployee.times do
 #       Employee.create(
