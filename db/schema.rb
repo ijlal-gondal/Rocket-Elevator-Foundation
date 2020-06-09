@@ -198,6 +198,8 @@ ActiveRecord::Schema.define(version: 2020_04_07_135028) do
     t.string "Result", default: "Incomplete", null: false
     t.string "Report"
     t.string "Status", default: "Pending", null: false
+    t.datetime "intervention_start_time"
+    t.datetime "intervention_end_time"
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -215,13 +217,6 @@ ActiveRecord::Schema.define(version: 2020_04_07_135028) do
     t.string "file_name"
     t.bigint "customer_id"
     t.index ["customer_id"], name: "index_leads_on_customer_id"
-  end
-
-  create_table "links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "url"
-    t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
